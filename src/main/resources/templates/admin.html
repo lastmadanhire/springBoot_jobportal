@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin Portal</title>
+    <link href="output.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/webjars/vue-multiselect/dist/vue-multiselect.min.css"/>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+</head>
+
+<body class="bg-gray-300 text-center">
+<div class="flex w-screen h-screen" id="app">
+    <div class="h-full w-[400px] bg-gray-200" v-show="showSideBar">
+        <div class="bg-gray-900 h-[50px] flex justify-start items-center">
+            <div class="px-5">
+                <a href="/" class="font-bold text-white text-xl">Admin Dashboard</a>
+            </div>
+        </div>
+        <div class="bg-gray-100 h-[calc(100vh-50px)] py-5">
+            <div class="flex flex-col gap-4 px-5">
+                <a href="/" class="flex gap-2 items-center font-medium text-sm rounded-md hover:bg-green-600 p-2 hover:text-white">
+                    <img src="home.svg" class="h-7 w-7" alt="">
+                    <span class="my-auto">Home</span>
+                </a> 
+            </div>
+            <div class="flex flex-col gap-4 px-5">
+                <a href="" class="flex gap-2 items-center font-medium text-sm rounded-md hover:bg-green-600 p-2 hover:text-white">
+                    <img src="users.svg" class="h-7 w-7" alt="">
+                    <span class="my-auto">DBA Users</span>
+                </a> 
+            </div>
+        </div>
+    </div>
+    <div class="h-full w-full bg-gray-400">
+        <div class="h-[50px] bg-gray-100 shadow-md border-b w-full px-5 flex justify-between items-center">
+            <div class="flex gap-2">
+                <img v-on:click="toggleSideBar()" src="menu.svg" class="h-7 w-7 text-white cursor-pointer" alt="">
+            </div>
+            <div class="right relative">
+                <div class="flex gap-1 cursor-pointer items-center" v-on:click="toggleDrop()">
+                    <img src="user.svg" class="h-10 w-10 text-white cursor-pointer ring-offset-2 p-1 rounded-full" alt="">
+                    <h2 class="text-sm font-medium">User</h2> 
+                </div>
+                <ul v-show="showDrop" class="absolute shadow-lg rounded min-w-[175px] right-1 flex flex-col p-2 text-gray-100 divide">
+                    <li><a href="" class="flex gap-2 mt-2 flex gap-1 items-center">
+                        <img class="w-7 h-7" src="images/icons/logout.png" alt="">
+                        <span class="text-sm text-black">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="h-[calc(100vh-50px)] bg-white p-2">
+            <div class="border border-gray-300 h-full rounded-lg"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/webjars/jquery/dist/jquery.min.js"></script>
+<script src="webjars/vue/dist/vue.js"></script>
+<script src="webjars/axios/dist/axios.min.js"></script>
+<script src="webjars/vue-multiselect/dist/vue-multiselect.min.js"></script>
+<script th:inline="javascript">
+
+</script>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+                showSideBar:true,
+                showDrop:false   
+        },
+        methods:{
+            toggleSideBar(){
+                this.showSideBar=!this.showSideBar
+            },
+            toggleDrop(){
+                this.showDrop=!this.showDrop 
+            }
+
+        }
+    })
+
+</script>
+</body>
+
+</html>

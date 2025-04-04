@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Vue-Springboot</title>
+    <link href="output.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div th:fragment="navbar" id="contents" class="flex gap-2 bg-white shadow-lg justify-between p-2">
+    <!-- left nav -->
+     <div class=" flex gap-2">
+        <h1>Logo</h1>
+        <ul class="flex gap-3 my-auto xs:hidden">
+            <li class="bg-green-500 rounded text-gray-100 px-2 py-1"><a href="/shop">Shop</a></li>
+            <li class="hover:bg-green-500 rounded hover:text-gray-100 px-2 py-1"><a href="/admin">Admin</a></li>
+            <li class="hover:bg-green-500 rounded hover:text-gray-100 px-2 py-1"><a href="/admin1">Admin1</a></li>
+        </ul>
+     </div>
+    <!-- right nav -->
+    <ul class="flex gap-3">
+        <div class="relative">
+            <li class="cursor-pointer" @click="profileActive=!profileActive">
+                <img src="images/icons/person.png" class="w-7 h-7 ring-black ring-2 rounded-full ring-offset-2" alt="">
+            </li>
+            <!-- <ul v-if="profileActive" class="absolute bg-green-500 rounded top-full min-w-[175px] right-1 flex flex-col p-2 text-gray-100 divide">
+                <li><a href="" class="flex gap-2">
+                    <img class="w-5 h-5" src="images/icons/settings.png" alt="">
+                    <span class="my-auto text-sm">Settings</span>
+                </a></li>
+                <li><a href="" class="flex gap-2 mt-2">
+                    <img class="w-5 h-5" src="images/icons/logout.png" alt="">
+                    <span class="my-auto text-sm">Logout</span>
+                </a></li>
+            </ul> -->
+        </div>
+    </ul>
+</div>
+
+<script src="/webjars/jquery/dist/jquery.min.js"></script>
+<script src="webjars/vue/dist/vue.js"></script>
+<script src="webjars/axios/dist/axios.min.js"></script>
+<!-- <script>
+    var app = new Vue({
+        el: '#contents',
+        data() {
+            return {
+                // loading: false,
+                profileActive:false,
+                roles: []
+            };
+        },
+        mounted() {
+            this.getGrantedAuthorities();
+        },
+        methods: {
+            logOut() {
+                this.loading = true;
+                axios.post("/logout")
+                    .then(window.location.reload())
+                    .catch(window.location.reload());
+            },
+            async getGrantedAuthorities() {
+                this.loading = true;
+                await axios.get("/get_granted_authorities", {
+                    params: {}
+                })
+                    .then((response) => {
+                        this.roles = response.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                    });
+            }
+        }
+    });
+</script> -->
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin Portal</title>
+    <link href="output.css" rel="stylesheet"/>
+</head>
+
+<body class="bg-gray-300 text-center">
+<div class="flex w-screen h-screen" id="app">
+    <div class="h-full w-full bg-gray-400">
+        <div class="h-[50px] bg-gray-100 shadow-md border-b w-full px-5 flex justify-between items-center">
+            <div class="flex gap-2 items-center">
+                <img src="menu.svg" class="h-7 w-7 text-white cursor-pointer" alt="">
+                <a href="/" class="flex gap-2 items-center font-medium text-sm rounded-md hover:bg-gray-900 p-2 hover:text-white">
+                    <img src="home.svg" class="h-7 w-7" alt="">
+                    <span class="my-auto">Home</span>
+                </a>
+                <a href="/register" class="flex gap-2 items-center font-medium text-sm rounded-md hover:bg-gray-900 p-2 hover:text-white">
+                    <img src="users.svg" class="h-7 w-7" alt="">
+                    <span class="my-auto">Register</span>
+                </a>
+            </div>
+            <div class="right relative">
+                <div class="flex gap-1 cursor-pointer items-center">
+                    <img src="user.svg" class="h-10 w-10 text-white cursor-pointer ring-offset-2 p-1 rounded-full" alt="">
+                    <h2 class="text-sm font-medium">User</h2> 
+                </div>
+                
+            </div>
+        </div>
+        <div class="h-[calc(100vh-50px)] bg-white p-2">
+            <div class="border border-gray-300 h-full rounded-lg flex justify-center">
+                <!-- registration form -->
+                 <div class="flex flex-col border rounded-lg w-[400px] my-5 bg-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-800">Create User Account</h2>
+                    <form class="flex flex-col gap-4 py-3 px-8 font-medium" method="post" th:action="@{/register}" th:object="${new_user}">
+                        <div th:if="${error}" class="text-gray-900 font-medium rounded-lg bg-red-200 p-2">
+                            <p th:text="${error}"></p>
+                        </div>
+                        <div class="">
+                            <input class="border w-full p-2 border-gray-600 rounded-lg" placeholder="Email" type="text"  th:field="*{email}">
+                        </div>
+                        <div class="">
+                            <input class="border w-full p-2 border-gray-600 rounded-lg" placeholder="Password" type="text" th:field="*{password}">
+                        </div>
+                        <div class="">
+                            <select th:field="*{userTypeId}" class="border w-full p-2 border-gray-600 rounded-lg">
+                                <th:block th:each="userType :${getAllTypes}">
+                                    <option th:text="${userType.userTypeName}" th:value="${userType.userTypeId}"></option>
+                                </th:block>   
+                            </select>
+        
+                        </div>
+                        <div class="">
+                            <button class="border w-full p-2 bg-gray-900 rounded-lg text-white text-xl" type="submit">Register</button>
+                        </div>
+                    </form>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/webjars/jquery/dist/jquery.min.js"></script>
+<script src="webjars/vue-multiselect/dist/vue-multiselect.min.js"></script>
+<script th:inline="javascript">
+
+</script>
+</body>
+
+</html>

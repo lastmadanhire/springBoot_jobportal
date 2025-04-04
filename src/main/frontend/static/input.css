@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    ::-webkit-scrollbar {
+        @apply w-2 bg-black dark:bg-white rounded-full
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-white hover:bg-white/20 focus:bg-white/30 active:bg-white/30 dark:bg-black hover:dark:bg-black/20 focus:dark:bg-black/30 active:dark:bg-black/30
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply rounded-md shadow-sm cursor-pointer hover:font-medium hover:shadow bg-green-500 text-white border-green-500 border-2 w-32 h-8 flex justify-center items-center disabled:btn-disabled
+    }
+
+    .btn-danger {
+        @apply rounded-md shadow-sm cursor-pointer hover:font-medium hover:shadow bg-red-500 text-white border-red-500 border-2 w-32 h-8 flex justify-center items-center disabled:btn-disabled
+    }
+
+    .btn-secondary {
+        @apply rounded-md shadow-sm cursor-pointer hover:font-medium hover:shadow bg-gray-300 text-black border-gray-300 border-2 w-32 h-8 flex justify-center items-center disabled:btn-disabled
+    }
+
+    .btn-disabled {
+        @apply rounded-md shadow-sm cursor-not-allowed font-medium bg-gray-200 border-gray-200 text-black/80 border-2 w-32 h-8 flex justify-center items-center line-through
+    }
+
+    .link {
+        @apply text-blue-500 hover:scale-x-105 hover:text-blue-700 cursor-pointer transition delay-150 duration-150 ease-in-out
+    }
+
+    .navbarlink {
+        @apply text-green-500 hover:scale-x-105 hover:text-green-700 cursor-pointer hover:bg-gray-100 hover:font-normal
+    }
+
+    html {
+        @apply text-base font-light
+    }
+
+    .input {
+        @apply border px-3 py-1 mx-2 rounded-md grow cursor-text disabled:cursor-not-allowed disabled:border-red-800 disabled:text-red-800 hover:border-green-600 disabled:hover:border-red-600 hover:text-green-600 disabled:hover:text-red-600 focus:border-green-600 disabled:focus:border-red-600 focus:outline-none focus:ring-0 focus:border-2 focus:text-green-600 disabled:focus:text-red-600 focus:font-semibold
+    }
+
+    .button {
+        @apply p-3 m-2 pr-0 mr-0 hover:text-green-600 hover:border border-green-600 hover:border-r-0 rounded-md rounded-r-none cursor-pointer h-fit transition delay-75 duration-75 ease-in-out
+    }
+
+    .button-red {
+        @apply p-3 m-2 pr-0 mr-0 hover:text-red-600 hover:border border-red-600 hover:border-r-0 rounded-md rounded-r-none text-red-600 h-fit transition delay-75 duration-75 ease-in-out
+    }
+
+    .row {
+        @apply flex gap-1 py-3 items-center
+    }
+
+    .row-title {
+        @apply font-bold w-24 cursor-default
+    }
+
+    .vselect {
+        @apply w-full hover:border-green-600 hover:disabled:border-red-600 cursor-pointer disabled:border-red-800 disabled:text-red-800 disabled:hover:text-red-600 disabled:cursor-not-allowed
+    }
+
+    .foreign-row {
+        @apply flex gap-1 hover:shadow-lg hover:border-green-600 hover:text-green-600 hover:font-bold hover:p-0.5 rounded-md cursor-pointer transition delay-75 duration-75 ease-in-out
+    }
+
+    .btn-card {
+        @apply border p-3 m-2 flex h-32 aspect-square gap-4 hover:shadow-lg hover:border-green-600 hover:text-green-600 cursor-pointer rounded-md justify-center items-center
+    }
+
+    .ripple-wrapper {
+        @apply w-full h-full text-inherit flex justify-center items-center transition delay-150 duration-150 ease-in-out
+    }
+}
